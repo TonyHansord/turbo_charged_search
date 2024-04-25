@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<%= turbo_frame_tag "drink" do %>
+
+<h1><%= @drink.name %></h1>
+
+<div>
+  <%= link_to "Edit this drink", edit_drink_path(@drink), data: { "turbo-frame": "_top" } %> |
+  <%= link_to "Back to drinks", drinks_path, data: { "turbo-frame": "_top" } %>
+
+  <%= button_to "Destroy this drink", @drink, method: :delete %>
+</div>
+
+<% end %>

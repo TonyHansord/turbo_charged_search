@@ -1,0 +1,19 @@
+<p style="color: green"><%= notice %></p>
+
+<h1 class="title is-1">Drinks</h1>
+
+<%= form_with(url: drinks_path, method: :get, data: { controller: "search-form", turbo_frame: "drinks", turbo_frame: "add", turbo_action: "advance"}) do |form| %>
+  <%= form.label :query, "Search by drink", class: "label"%>
+  <div class="is-flex is-justify_content-space-between">
+    <%= form.text_field :query, class: "input", data: {action: "input->search-form#search"} %>
+    <%= form.submit "Search", class: "button has-background-warning has-text-primary-15-invert" %>
+  </div>  
+  <% end %>
+
+
+<div class="py-4">
+  <%= render "drinks", drinks: @drinks %>
+  <%= render "add", query: @query %>
+</div>
+
+<%= link_to "New drink", new_drink_path, class: "button has-background-warning has-text-primary-15-invert" %>
